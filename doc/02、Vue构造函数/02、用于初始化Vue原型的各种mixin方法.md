@@ -22,7 +22,7 @@ function Vue (options) {
 }
 ```
 
-最后执行通过上面 import 导入的方法：
+最后依次执行上面 import 导入的方法：
 
 ``` javascript
 initMixin(Vue)
@@ -172,7 +172,7 @@ export function renderMixin (Vue: Class<Component>) {
 
 ### 总结
 
-各种 mixin 方法的作用就是在 Vue 构造函数的原型上添加各种属性和方法。
+各种 mixin 方法的作用就是在 Vue 构造函数的原型上添加属性和方法。
 
 ### 注意
 本文最后编辑于2018/11/25，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。

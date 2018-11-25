@@ -200,7 +200,7 @@ export function initUse (Vue: GlobalAPI) {
 }
 ```
 
-Vue 官网对于 Vue.use 的使用介绍：
+Vue 官网对于 Vue.use 的使用介绍：[Vue.use](https://cn.vuejs.org/v2/guide/plugins.html)
 
 7、通过 initMixin 方法在 Vue 构造函数上添加 mixin 静态方法：
 
@@ -208,7 +208,7 @@ Vue 官网对于 Vue.use 的使用介绍：
 initMixin(Vue)
 ```
 
-initUse 方法定义在 src/core/global-api/mixin.js 中：
+initMixin 方法定义在 src/core/global-api/mixin.js 中：
 
 ``` javascript
 import { mergeOptions } from '../util/index'
@@ -228,7 +228,7 @@ export function initMixin (Vue: GlobalAPI) {
 initExtend(Vue)
 ```
 
-initUse 方法定义在 src/core/global-api/extend.js 中：
+initExtend 方法定义在 src/core/global-api/extend.js 中：
 
 ``` javascript
 export function initExtend (Vue: GlobalAPI) {

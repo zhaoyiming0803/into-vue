@@ -1,6 +1,6 @@
 在上一节的笔记中，src/core/index.js 这个脚本文件已经执行完毕，继续返回上一层，找到 src/platforms/web/runtime/index.js 。
 
-从 Vue 的目录命名也可以看到，core 下面都是一些核心的公共的代码，也就是 web 、weex、server 公用的，当前笔记只记录 Vue 在 web 平台上的一些实现原理，打开 src/platforms/web/runtime/index.js 文件，主要做了以下几件事情：
+从 Vue 的目录命名也可以看到，core 下面都是一些核心的代码，也就是 web 、weex、server 公用的，当前笔记只记录 Vue 在 web 平台上的一些实现原理，打开 src/platforms/web/runtime/index.js 文件，主要做了以下几件事情：
 
 1、在 Vue.config 静态属性上添加其他属性：
 
