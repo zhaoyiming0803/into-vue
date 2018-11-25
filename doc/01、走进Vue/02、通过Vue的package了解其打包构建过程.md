@@ -147,4 +147,4 @@ if (process.env.TARGET) {
 最终判断 process.env.TARGET 是否为真，使用 module.exports 或 exports 导出 genConfig，在 genConfig 中就是将 builds 中的配置项格式转成 rollup 构建所需的格式，执行构建即可。
 
 ### 注意
-本文发布于2018/11/18，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
+本文最后编辑于2018/11/18，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
