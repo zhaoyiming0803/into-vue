@@ -287,7 +287,7 @@ export function initAssetRegisters (Vue: GlobalAPI) {
 
 Vue.options 上的 components、filters、directives 是在 实例化 Vue 时做 merge 用的，相当于是 Vue 官方为我们内置的一些组件、过滤器和指令。
 
-Vue 上的 component、filter、directive 是Vue 官方为我们提供的全局注册组件、过滤器和指令的API接口。比如我们在 main.js 中执行 Vue.components('Hello', Hello)，那么在其他任意一个组件中都能使用 Hello 这个全局组件。
+Vue 上的 component、filter、directive 是Vue 官方为我们提供的全局注册组件、过滤器和指令的API接口。比如我们在 main.js 中执行 Vue.component('Hello', Hello)，那么在其他任意一个组件中都能使用 Hello 这个全局组件。
 
 ### 总结
 
