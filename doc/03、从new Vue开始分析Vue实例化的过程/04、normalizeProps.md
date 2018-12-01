@@ -138,9 +138,10 @@ else if (isPlainObject(props)) {
 ``` javascript
 {
   props: {
+    "place-holder": "mock one",
     person: {
-      type: Object,
-      default: ''
+      name: 'zhaoyiming',
+      age: 18
     }
   },
 }
@@ -150,6 +151,9 @@ else if (isPlainObject(props)) {
 ``` javascript
 {
   props: {
+    placeHolder: {
+      type: 'mock one'
+    },
     person: {
       type: {
         name: 'zhaoyiming',
