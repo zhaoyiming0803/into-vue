@@ -72,7 +72,7 @@ Vue.mixin = function (mixin: Object) {
 
 ![image](https://github.com/zymfe/into-vue/blob/master/example/Vue.mixin/1.jpg)
 
-总共有 Vue 构造函数父类，app 组件 和 hello 组件子类， 共 3个 Vue 类，mixin 中的 created 被执行了3次，Vue.mixin created 被打印了3次。
+Vue 构造函数父类，app 组件 和 hello 组件子类， 共 3个 Vue 类，mixin 中的 created 被执行了3次，Vue.mixin created 被打印了3次。
 
 还有一个发现：created 是从 父 到 子 执行的，mounted 是 从 子 到 父 执行的，这个就是组件渲染 patch 的顺序，是一个树状的结构，后面的组件相关笔记中会详细介绍。
 
