@@ -150,14 +150,6 @@ vm.$options = mergeOptions(
         uname: 'zhaoyiming'
       }
     },
-    beforeCreate () {},
-    created () {},
-    beforeMount () {},
-    mounted () {},
-    beforeUpdate () {},
-    updated () {},
-    beforeDestory () {},
-    destroyed () {}
     render: h => h(App)
   },
   vm

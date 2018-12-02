@@ -50,7 +50,7 @@ function normalizeProps (options: Object, vm: ?Component) {
 
 ### 判断是否存在 props 选项
 
-不存在 props 选项，直接 return 掉。
+不存在 props 选项，直接 return 。
 
 ### 判断 props 选项是否是数组
 
@@ -200,6 +200,8 @@ function cached (fn) {
 ### 总结
 
 通过本节源码笔记，我们知道了子组件中 props 的两种写法，以及这两种写法在 Vue 中被转换成的最终格式。
+
+本节笔记测试代码参考：[normalizeProps](https://github.com/zymfe/into-vue/tree/master/example/normalizeProps)。
 
 ### 注意
 本文最后编辑于2018/12/02，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
