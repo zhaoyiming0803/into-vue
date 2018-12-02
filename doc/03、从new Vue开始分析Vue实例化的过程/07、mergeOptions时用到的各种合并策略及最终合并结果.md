@@ -164,7 +164,7 @@ if (extendsFrom) {
 
 当 child.extends 为真时，递归调用 mergeOptions，将 parent 和 extends 的选项合并到 options 上，然后给 parent 重新赋值为 options。
 
-# child.mixins
+### child.mixins
 
 ``` javascript
 if (child.mixins) {
@@ -176,7 +176,7 @@ if (child.mixins) {
 
 当 child.mixins 为真时，递归调用 mergeOptions，将 parent 和 mixins 的选项合并到 options 上，然后给 parent 重新赋值为 options。
 
-递归调用之后，还是会回到接下来的合并逻辑，现在就正式看下每一种选项的具体合并策略：
+递归调用之后，还是会回到下面的代码逻辑，现在就正式看下每一种选项的具体合并策略：
 
 ``` javascript
 const options = {}
