@@ -1,6 +1,6 @@
 Vue 的 github 仓库地址：[Vue](https://github.com/vuejs/vue)，不管怎么样，先 clone 到本地再说。
 
-### Vue目录结构
+### Vue源码目录结构
 
 <pre>
 ├── scripts                                           // 源码构建脚脚本
