@@ -80,7 +80,7 @@ banner是构建出口文件顶部的注释信息，通过这样的配置，构�
 
 ### 构建为什么要区分【运行时版】和【完整版】呢？
 
-我们知道，Vue 将数据经过一系列的处理，最终要将模板编译并渲染到页面，但是编译不需要在代码运行的时候去做，可以放到打包构建的时候做，这样提升了代码运行时的性能，而且运行时代码省去了compiler部分，还能节省代码体积。在《Vue目录结构说明》中，有这样一段注释：entry-runtime.js + entry-compiler.js = entry-runtime-with-compiler.js
+我们知道，Vue 将数据经过一系列的处理，最终要将模板编译并渲染到页面，但是编译不需要在代码运行的时候去做，可以放到打包构建的时候做，这样提升了代码运行时的性能，而且运行时代码省去了compiler部分，还能节省代码体积。在上一节笔记《Vue目录结构说明》中，有这样一段注释：entry-runtime.js + entry-compiler.js = entry-runtime-with-compiler.js
 
 ### 以 entry-runtime-with-compiler 为例了解整个构建配置过程
 
