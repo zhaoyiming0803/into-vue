@@ -9,7 +9,7 @@ Vue.component('hello', hello);
 
 然后在项目内任意一个组件中，都可以使用 hello 组件。本节笔记实例代码地址：[Vue.component](https://github.com/zymfe/into-vue/tree/master/example/Vue.component)
 
-平时开发项目大多数都是用第三方的组件，移动端的 vux，后台管理系统的 element-ui，因为这些开源项目为了满足大众需求，一般都内置很多的组件，但我们并不是全部都会用到，这个时候可以使用 Vue.component 来选择性的注册某些组件，也是减少项目打包提及的一种方式。
+平时开发项目大多数都是用第三方的组件，移动端的 vux，后台管理系统的 element-ui，因为这些开源项目为了满足大众需求，一般都内置很多的组件，但我们并不是全部都会用到，这个时候可以使用 Vue.component 来选择性的注册某些组件，也是减少项目打包体积的一种方式。
 
 Vue.component 被定义在 src/core/global-api/assets.js 文件中：
 
