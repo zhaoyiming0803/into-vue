@@ -96,7 +96,7 @@ export const camelize = cached((str: string): string => {
 })
 ```
 
-camelize 实际是 cached 方法的返回值，而 cached 最终返回的是 cachedFn 方法。为什么要这么设计呢？其实在 cached 方法内部保存了一个闭包变量 cache，cachedFn 内要读取 cache 这个变量，这样 cache 变量不用暴露在 windows 对象上，也不会污染或影响其他地方的同名cache 变量，我们在今天的代码中，也可以使用这种非常巧妙的技巧。
+camelize 实际是 cached 方法的返回值，而 cached 最终返回的是 cachedFn 方法。为什么要这么设计呢？其实在 cached 方法内部保存了一个闭包变量 cache，cachedFn 内要读取 cache 这个变量，这样 cache 变量不用暴露在 windows 对象上，也不会污染或影响其他地方的同名cache 变量，我们在今后的代码中，也可以使用这种非常巧妙的技巧。
 
 cachedFn 内判断，如果 cache[str] 已经存在，就直接返回，如果不存在，则执行 fn 函数，也就是 cached 函数传入的参数，它内部使用正则做了 replace，结果就是将类似 hello-world 这样的 prop 格式化为 helloWorld 这种格式。
 
@@ -204,4 +204,4 @@ function cached (fn) {
 本节笔记测试代码参考：[normalizeProps](https://github.com/zymfe/into-vue/tree/master/example/normalizeProps)。
 
 ### 注意
-本文最后编辑于2018/12/02，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
+本文最后编辑于2018/12/28，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
