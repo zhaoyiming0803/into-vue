@@ -29,13 +29,15 @@ initProxy = function initProxy (vm) {
   }
 }
 ```
-首先判断 hasProxy 是否为真，如果为假，则直接与生产环境一致 vm._renderProxy = vm，如果为真，则将 Proxy 实例赋值为 vm._renderrProxy，从而实现对 vm 实例的代理。
+首先判断 hasProxy 是否为真，如果为假，则直接与生产环境一致 vm._renderProxy = vm，如果为真，则将 Proxy 实例赋值为 vm._renderProxy，从而实现对 vm 实例的代理。
 
 hasProxy 定义如下：
 
 ``` javascript
 const hasProxy = typeof Proxy !== 'undefined' && isNative(Proxy)
 ```
+
+如果当前宿主环境支持 Proxy，则 hasProxy 为真，反之为假。
 
 isNative 的定义如下：
 
@@ -46,7 +48,7 @@ export function isNative (Ctor: any): boolean {
 }
 ```
 
-如果当前宿主环境支持 Proxy，则 hasProxy 为真，反之为假。
+在今后的开发过程中，如果需要判断方法是否是 JS 原生的，就可以使用 isNative。
 
 接下来重点看 if 分支内的代码：
 
@@ -102,7 +104,32 @@ const hasHandler = {
 }
 ```
 
-hasHandler 在 Vue 中要做的就是：拦截 with 语句中的对象属性访问，如果在 template 中使用了 data 中未定义的属性，则通过 warnNonPresent 方法提示：
+hasHandler 在 Vue 中要做的就是：拦截 with 语句中的对象属性访问。
+
+allowedGlobals 的定义如下：
+
+``` javascript
+const allowedGlobals = makeMap(
+  'Infinity,undefined,NaN,isFinite,isNaN,' +
+  'parseFloat,parseInt,decodeURI,decodeURIComponent,encodeURI,encodeURIComponent,' +
+  'Math,Number,Date,Array,Object,Boolean,String,RegExp,Map,Set,JSON,Intl,' +
+  'require' // for Webpack/Browserify
+)
+```
+
+通过 makeMap 生成一个 mapList，里边包含 window 对象上的全局方法，所以我们可以在 tempalte 中这样使用：
+
+``` vue
+<template>
+  <div>
+    {{Number('123') + 456}}
+  </div>
+</template>
+```
+
+可能在平时的开发过程中，我们直接会用一个计算属性代替以上写法，但这种写法也是有效的。
+
+如果在 template 中使用了 data 中未定义的属性，则通过 warnNonPresent 方法提示：
 
 ``` javascript
 const warnNonPresent = (target, key) => {
@@ -117,7 +144,7 @@ const warnNonPresent = (target, key) => {
 }
 ```
 
-这个提示，我们在浏览器控制台经常会看到，告诉我们在 template 中使用了未定义的属性或方法。
+这个提示，在浏览器控制台经常会看到，告诉我们 template 中使用了未定义的属性或方法。
 
 Vue 内部有很多属性、方法都以 _ 和 $ 开头，如果我们业务代码 data 中的属性名 或 methods 中的方法名是以 _ 或 $ 开头，并且和 Vue 内部的某个属性或方法重名，就会有以下提示：
 
@@ -147,7 +174,7 @@ const getHandler = {
 }
 ```
 
-通过 get 拦截对象的属性访问，与 hasHandler 的目的是一样的。总之，initProxy 方法的作用就是代理并拦截 data 或 methods 属性，为开发者提供更友好的错误提示。
+get 拦截对象的属性访问，与 hasHandler 的目的是一样的。总之，initProxy 方法的作用就是代理并拦截 data 或 methods 属性，为开发者提供更友好的错误提示。
 
 ### 注意
 本文最后编辑于2019/01/13，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
