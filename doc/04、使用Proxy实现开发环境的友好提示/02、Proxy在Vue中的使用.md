@@ -85,6 +85,69 @@ new Vue({
 
 但是并没有为 render 函数 指定 _withStripped 属性。
 
+全局搜索整个 Vue 项目，在 test/unit/features/instance/render-proxy.spec.js 文件中发现了 _withStripped，其中2段代码如下：
+
+``` javascript
+it('should warn missing property in render fns without `with`', () => {
+  const render = function (h) {
+    return h('div', [this.a])
+  }
+  render._withStripped = true
+  new Vue({
+    render
+  }).$mount()
+  expect(`Property or method "a" is not defined`).toHaveBeenWarned()
+})
+```
+
+``` javascript
+it('should warn properties starting with $ when not found (with stripped)', () => {
+  const render = function (h) {
+    return h('p', this.$a)
+  }
+  render._withStripped = true
+  new Vue({
+    data: { $a: 'foo' },
+    render
+  }).$mount()
+  expect(`Property "$a" must be accessed with "$data.$a"`).toHaveBeenWarned()
+})
+```
+
+很显然，这是一些测试代码，所以一般情况下，如果我们自己写 render 函数，并且不指定 _withStripped 为 true,则 options.render._withStripped 都为 false，即 handlers 为 hasHandler：
+
+``` javascript
+// determine which proxy handler to use
+const options = vm.$options
+const handlers = options.render && options.render._withStripped
+  ? getHandler
+  : hasHandler
+vm._renderProxy = new Proxy(vm, handlers)
+```
+
+如果我们想要我们自己写的 render 函数有错误提示，可以在选项中指定 _withStripped 为 true 即可：
+
+``` javascript
+import Vue from 'vue'
+import App from './App'
+
+const render = (h) => {
+  return h(App);
+}
+
+render._withStripped = true;
+
+new Vue({
+  el: '#app',
+  data () {
+    return {
+      uname: 'zhaoyiming'
+    }
+  },
+  render
+})
+```
+
 还有一种情况就是 Vue 实例化组件并渲染的时候，会通过 vue-loader 编译 .vue 文件，最后会生成 render 函数，我们平时工作中只需要写 template 模板即可，编译 template 的时候会遵循 JS 严格模式，将代码中的 with 关键字全部转换为属性访问的形式，即 vm.test 或 vm['test']，并且将 render._withStripped 置为 true。了解 Proxy 基本用法之后就知道，这种属性访问的形式是无法触发 Proxy 的 has 拦截的，只能触发 get 拦截，所以通过判断 _withStripped 来决定 handlers 的值。
 
 hasHandler 的定义如下：
@@ -177,4 +240,4 @@ const getHandler = {
 get 拦截对象的属性访问，与 hasHandler 的目的是一样的。总之，initProxy 方法的作用就是代理并拦截 data 或 methods 属性，为开发者提供更友好的错误提示。
 
 ### 注意
-本文最后编辑于2019/01/13，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
+本文最后编辑于2019/03/24，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
