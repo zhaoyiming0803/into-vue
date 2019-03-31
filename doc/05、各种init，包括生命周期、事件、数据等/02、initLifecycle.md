@@ -55,9 +55,9 @@ vm.$parent = parent
 
 这是在 Vue 创建 VNode 及其 patch 过程中形成的父子级关系，先了解下：
 
-每个 .vue 文件（组件）都会被 vue-loader 解析为一个 json 对象，也就是今后原始的 options 对象，每个组件会先通过 Vue.extend 形成 Vue 子类，在今后的实例化过程中又会执行 new Vue 的整个过程，经过 mergeOptions、一系列 mixin 、 init之后，然后将 template 模板变成 VNode，最后执行 patch 渲染。
+每个 .vue 文件（组件）都会被 vue-loader 解析为一个 json 对象，也就是今后原始的 options 对象，每个组件会先通过 Vue.extend 形成 Vue 子类，在今后的实例化过程中又会执行 new Vue 的整个过程，经过 mergeOptions、一系列 mixin 、 init之后，然后将 template 模板编译成 VNode，最后执行 patch 渲染。
 
-本节说道的组件父子级关系，就是在 patch 过程中形成的（具体说是执行 createComponentInstanceForVnode 函数时）。
+本节说到的组件父子级关系，就是在 patch 过程中形成的（具体说是执行 createComponentInstanceForVnode 函数时）。
 
 patch 其实是一个递归的过程，也就是先渲染子组件，最后渲染父组件。具体过程可以参考：https://github.com/zymfe/test-code/blob/master/test49.html 。
 
@@ -85,7 +85,7 @@ _update 就是 patch 的过程，最后来到 createComponentInstanceForVnode �
 
 ![image](https://github.com/zymfe/into-vue/blob/master/example/initLifecycle/4.jpg)
 
-找到了，执行 _update 方法的对象就是当前正在被 patch 对象，故名思议，也就是活动对象 activeInstance，因为同一时间只有一个组件被渲染，最后总结起来就是：当前正在被实例化的对象，其 parent 指向正在被 path 的父级。
+找到了，执行 _update 方法的对象就是当前正在被 patch 对象，故名思议，也就是活动对象 activeInstance，因为同一时间只有一个组件被渲染，最后总结起来就是：当前正在被实例化的对象，其 parent 指向正在被 path 的组件。
 
 关于组件 VNode 和 patch 的具体内容，暂时先记到这里，详细过程会在 07 节笔记中介绍。
 
@@ -106,4 +106,4 @@ vm._isBeingDestroyed = false
 在 vm 对象上又初始化了一些属性，至此，initLifecycle 方法执行完毕。
 
 ### 注意
-本文最后编辑于2019/03/24，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
+本文最后编辑于2019/03/31，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
