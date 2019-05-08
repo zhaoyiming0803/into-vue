@@ -21,6 +21,10 @@
 ├── vue-code  // vue源码核心部分
 </pre>
 
+### 对 Vue 响应式原理的模拟
+
+https://github.com/zymfe/test-code/blob/master/test64.js
+
 ### 说明
 
 - 如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
