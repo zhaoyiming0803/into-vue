@@ -249,7 +249,7 @@ if (cachedCtors[SuperId]) {
 
 我们知道，全局或局部注册完一个组件之后，在 template 中就要使用，这个组件可能会被多次使用，如果每次使用都走一遍实例化 Vue 子类的过程，是很耗费性能的，所以这里做了缓存，把 SuperId 做为键名，下次使用的时候直接返回即可。例如：https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/main.js
 
-以上测试代码，debugger 看下效果，两次引用 hello 组件，也就需要继承两次父类，但是第二次，直接从缓存中返回：
+以上测试代码，debugger 看下效果，两次引用 hello 组件，原本要继承两次父类，但其实是同一个组件，同一个子类，所以直接从缓存中返回：
 
 第一次：
 
@@ -267,7 +267,7 @@ cachedCtors[SuperId] = Sub;
 return Sub
 ```
 
-子类创建完成后实例化一个组件 VNode，然后在 patch 过程中执行 createComponentInstanceForVnode 实例子类，继续子类的 init 过程。具体步骤在后面的笔记中介绍。
+子类创建完成后实例化一个组件 VNode，然后在 patch 过程中执行 createComponentInstanceForVnode 实例化子类，继续子类的 init 过程。具体步骤在后面的笔记中介绍。
 
 ### 注意
 本文最后编辑于2019/05/11，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
