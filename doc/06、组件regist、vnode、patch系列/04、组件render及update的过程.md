@@ -212,4 +212,5 @@ Vue.prototype.$mount = function () {
 
 整个 patch 的过程是执行递归，先子后父，具体示例可以参考：https://github.com/zymfe/test-code/blob/master/test49.html
 
+### 注意
 本文最后编辑于2019/05/03，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。

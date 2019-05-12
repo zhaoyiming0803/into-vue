@@ -169,4 +169,5 @@ export function proxy (target: Object, sourceKey: string, key: string) {
 
 实现拦截的原理很简单，《JavaScript高级程序设计》一书中对 Object.defineProperty 有很详细的介绍。
 
+### 注意
 本文最后编辑于2019/05/12，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
