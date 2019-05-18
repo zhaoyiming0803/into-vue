@@ -151,12 +151,30 @@ export function createComponent (
 }
 ```
 
-我们知道，在实例化 Vue 类的时候，Vue.options 选项要合并到 vm.$options 上，初始化 global 全局 api 的时候，有这样一句代码：
+初始化 global 全局 api 的时候，有这样一句代码：
 
 ``` javascript
 // this is used to identify the "base" constructor to extend all plain-object
 // components with in Weex's multi-instance scenarios.
 Vue.options._base = Vue
+```
+
+在实例化 Vue 类的时候（执行 this._init()），Vue.options 选项要合并到 vm.$options 上：
+
+``` javascript
+// merge options
+  if (options && options._isComponent) {
+    // optimize internal component instantiation
+    // since dynamic options merging is pretty slow, and none of the
+    // internal component options needs special treatment.
+    initInternalComponent(vm, options)
+  } else {
+    vm.$options = mergeOptions(
+      resolveConstructorOptions(vm.constructor),
+      options || {},
+      vm
+    )
+  }
 ```
 
 所以 vm.$options._base = Vue，下面这句代码的来源就是如此：
@@ -270,4 +288,4 @@ return Sub
 子类创建完成后实例化一个组件 VNode，然后在 patch 过程中执行 createComponentInstanceForVnode 实例化子类，继续子类的 init 过程。具体步骤在后面的笔记中介绍。
 
 ### 注意
-本文最后编辑于2019/05/11，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
+本文最后编辑于2019/05/18，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
