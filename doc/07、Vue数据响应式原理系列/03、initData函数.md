@@ -65,7 +65,7 @@ export function getData (data: Function, vm: Component): any {
 
 代码很简单，将开发者写的 data 函数放入 try catch 中执行，并捕获可能会出现的错误。
 
-pushTarget 和 popTarget 是用来解决重复收集依赖（观察者）的，后面的依赖收集相关笔记中会详细介绍。
+pushTarget 和 popTarget 用来解决收集多余的依赖（观察者），后面的依赖收集相关笔记中会详细介绍。
 
 ``` javascript
 data = vm._data = typeof data === 'function'
