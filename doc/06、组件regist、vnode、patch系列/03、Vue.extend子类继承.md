@@ -126,7 +126,7 @@ export function _createElement (
 vnode = createComponent(Ctor, data, context, children, tag)
 ```
 
-这个 createElement 是定义在 /src/core/vdom/create-component.js 文件中，代码如下：
+这个 createComponent 是定义在 /src/core/vdom/create-component.js 文件中，代码如下：
 
 ``` javascript
 export function createComponent (
