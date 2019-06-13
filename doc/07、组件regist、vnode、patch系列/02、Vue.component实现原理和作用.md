@@ -52,7 +52,7 @@ initAssetRegisters 为我们提供了 全局注册 component、directive 等功�
 
 在前面的笔记《[用于初始化Vue全局API的initGlobalAPI方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/03%E3%80%81%E7%94%A8%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96Vue%E5%85%A8%E5%B1%80API%E7%9A%84initGlobalAPI%E6%96%B9%E6%B3%95.md)》中提到，this.optiinos._base 就是 Vue 父类本身。
 
-参考下节笔记《[Vue.extend子类继承](https://github.com/zymfe/into-vue/blob/master/doc/06%E3%80%81%E7%BB%84%E4%BB%B6regist%E3%80%81vnode%E3%80%81patch%E7%B3%BB%E5%88%97/03%E3%80%81Vue.extend%E5%AD%90%E7%B1%BB%E7%BB%A7%E6%89%BF.md)》了解 Vue.extend 做了哪些事情。
+参考下节笔记《[Vue.extend子类继承](https://github.com/zymfe/into-vue/blob/master/doc/07%E3%80%81%E7%BB%84%E4%BB%B6regist%E3%80%81vnode%E3%80%81patch%E7%B3%BB%E5%88%97/03%E3%80%81Vue.extend%E5%AD%90%E7%B1%BB%E7%BB%A7%E6%89%BF.md)》了解 Vue.extend 做了哪些事情。
 
 在 dist/vue.esm.js 文件中，找到 initAssetRegisters 方法，然后在方法体中打个 debugger，浏览器中看下效果，默认的全局组件是：
 
