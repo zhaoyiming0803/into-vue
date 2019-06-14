@@ -24,19 +24,24 @@ export function createElement (
   normalizationType: any,
   alwaysNormalize: boolean
 ): VNode | Array<VNode> {
+  // data 可能是数组或纯对象，所以开始的时候做了参数合并
+  // 下面写 demo 印证下
   if (Array.isArray(data) || isPrimitive(data)) {
     normalizationType = children
     children = data
     data = undefined
   }
+  // 根据 normalizationType 的值将数组降维，后面笔记详述其过程
   if (isTrue(alwaysNormalize)) {
     normalizationType = ALWAYS_NORMALIZE
   }
+  // 执行 _createElement，最终返回一个 vnode，也就是当前函数 createElement 的返回值
+  // 后面笔记详述其过程
   return _createElement(context, tag, data, children, normalizationType)
 }
 ```
 
-data 可以是数组或纯对象，所以开始的时候做了参数合并，比如我们自己实现 render 函数的返回值：
+比如我们自己实现 render 函数的返回值：
 
 ``` javascript
 new Vue({
@@ -74,7 +79,9 @@ new Vue({
 });
 ```
 
-我们在 createElement 方法的第一行打个 debugger，浏览器中单步调试，前两次 data 是纯对象，第三次 data 是数组，h 方法就是 vm._c 或 vm.$createElement：
+我们在 createElement 方法的第一行打个 debugger，浏览器中单步调试，前两次 data 是纯对象，第三次 data 是数组，这也证明：一个深层嵌套的 vnode，其转成真实dom的过程是使用递归的方式先子（元素）后父（元素）。
+
+h 方法就是 vm._c 或 vm.$createElement：
 
 ![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/1.png)
 
