@@ -83,11 +83,11 @@ new Vue({
 
 h 方法就是 vm._c 或 vm.$createElement：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/1.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/1.png)
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/2.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/2.png)
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/3.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/3.png)
 
 最后返回 _createElement 方法，_createElement 方法就定义在 createElement 方法的下面，代码如下：
 
@@ -272,17 +272,17 @@ if (cachedCtors[SuperId]) {
 }
 ```
 
-我们知道，全局或局部注册完一个组件之后，在 template 中就要使用，这个组件可能会被多次使用，如果每次使用都走一遍实例化 Vue 子类的过程，是很耗费性能的，所以这里做了缓存，把 SuperId 做为键名，下次使用的时候直接返回即可。例如：https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/main.js
+我们知道，全局或局部注册完一个组件之后，在 template 中就要使用，这个组件可能会被多次使用，如果每次使用都走一遍实例化 Vue 子类的过程，是很耗费性能的，所以这里做了缓存，把 SuperId 做为键名，下次使用的时候直接返回即可。例如：https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/main.js
 
 以上测试代码，debugger 看下效果，两次引用 hello 组件，原本要继承两次父类，但其实是同一个组件，同一个子类，所以直接从缓存中返回：
 
 第一次：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/4.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/4.png)
 
 第二次：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/5.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/5.png)
 
 Vue.extend 中剩下的代码就比较容易理解了，子类通过原型继承的方式获得了 Vue 父类的属性和方法，然后将 Vue 父类上的静态属性和方法也都赋值给子类，完成一系列工作之后，缓存当前子类，并返回。
 

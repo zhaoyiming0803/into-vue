@@ -66,11 +66,11 @@ Vue.mixin = function (mixin: Object) {
 
 上面的 created 钩子函数中打印 Vue.mixin created，mounted 钩子函数中打印 Vue.mixin mounted，可以做个测试，有多少个 Vue 类（子类或父类）被实例化，它们就会被打印多少次。
 
-测试代码可参考：[Vue.mixin](https://github.com/zymfe/into-vue/tree/master/example/Vue.mixin)
+测试代码可参考：[Vue.mixin](https://github.com/zymfe/into-vue/tree/master/examples/Vue.mixin)
 
 最后的打印结果为：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/Vue.mixin/1.jpg)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/Vue.mixin/1.jpg)
 
 Vue 构造函数父类，app 组件 和 hello 组件子类， 共 3个 Vue 类，mixin 中的 created 被执行了3次，Vue.mixin created 被打印了3次。
 
