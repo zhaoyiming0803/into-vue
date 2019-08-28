@@ -7,7 +7,7 @@ import hello from './components/hello';
 Vue.component('hello', hello);
 ```
 
-然后在项目内任意一个组件中，都可以使用 hello 组件。本节笔记实例代码地址：[Vue.component](https://github.com/zymfe/into-vue/tree/master/example/Vue.component)
+然后在项目内任意一个组件中，都可以使用 hello 组件。本节笔记实例代码地址：[Vue.component](https://github.com/zymfe/into-vue/tree/master/examples/Vue.component)
 
 平时开发项目大多数都是用第三方的组件，移动端的 vux，后台管理系统的 element-ui，因为这些开源项目为了满足大众需求，一般都内置很多的组件，但我们并不是全部都会用到，这个时候可以使用 Vue.component 来选择性的注册某些组件，也是减少项目打包体积的一种方式。
 
@@ -48,7 +48,7 @@ initAssetRegisters 为我们提供了 全局注册 component、directive 等功�
 
 2、hello.vue 中的代码通过 Vue.loader 会转为一个 json 对象，将作为 Vue.extend 方法的参数，执行 Vue.extend 方法后生成Vue 子类，也可以说是子组件类。
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/Vue.component/3.jpg)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/Vue.component/3.jpg)
 
 在前面的笔记《[用于初始化Vue全局API的initGlobalAPI方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/03%E3%80%81%E7%94%A8%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96Vue%E5%85%A8%E5%B1%80API%E7%9A%84initGlobalAPI%E6%96%B9%E6%B3%95.md)》中提到，this.optiinos._base 就是 Vue 父类本身。
 
@@ -56,13 +56,13 @@ initAssetRegisters 为我们提供了 全局注册 component、directive 等功�
 
 在 dist/vue.esm.js 文件中，找到 initAssetRegisters 方法，然后在方法体中打个 debugger，浏览器中看下效果，默认的全局组件是：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/Vue.component/1.jpg)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/Vue.component/1.jpg)
 
 参考之前的笔记：《[总结下目前挂载到 Vue 构造函数上的静态属性和方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》
 
 执行完 Vue.component 之后的全局组件是：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/Vue.component/2.jpg)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/Vue.component/2.jpg)
 
 ### 总结
 

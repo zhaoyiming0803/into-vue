@@ -41,7 +41,7 @@ resolve.alias 就是用于路径别名配置的，这样我们在项目中导入
 "module": "dist/vue.runtime.esm.js", //  用于 webpack2 和 rollup
 ```
 
-scripts 字段很熟悉了，我们平时总是 npm run dev 、 npm run build 等命令都是在这儿配置，这里仅有 web 平台相关的3中配置，其他平台包括 server 、 weex， 我暂时还没有太深入的研究。
+scripts 字段很熟悉了，我们平时总是 npm run dev 、 npm run build 等命令都是在这儿配置，这里仅有 web 平台相关的3种配置，其他平台包括 server 、 weex。
 
 ``` javascript
 // 完整版 umd 模块

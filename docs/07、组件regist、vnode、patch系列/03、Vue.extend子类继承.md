@@ -24,19 +24,24 @@ export function createElement (
   normalizationType: any,
   alwaysNormalize: boolean
 ): VNode | Array<VNode> {
+  // data 可能是数组或纯对象，所以开始的时候做了参数合并
+  // 下面写 demo 印证下
   if (Array.isArray(data) || isPrimitive(data)) {
     normalizationType = children
     children = data
     data = undefined
   }
+  // 根据 normalizationType 的值将数组降维，后面笔记详述其过程
   if (isTrue(alwaysNormalize)) {
     normalizationType = ALWAYS_NORMALIZE
   }
+  // 执行 _createElement，最终返回一个 vnode，也就是当前函数 createElement 的返回值
+  // 后面笔记详述其过程
   return _createElement(context, tag, data, children, normalizationType)
 }
 ```
 
-data 可以是数组或纯对象，所以开始的时候做了参数合并，比如我们自己实现 render 函数的返回值：
+比如我们自己实现 render 函数的返回值：
 
 ``` javascript
 new Vue({
@@ -74,13 +79,15 @@ new Vue({
 });
 ```
 
-我们在 createElement 方法的第一行打个 debugger，浏览器中单步调试，前两次 data 是纯对象，第三次 data 是数组，h 方法就是 vm._c 或 vm.$createElement：
+我们在 createElement 方法的第一行打个 debugger，浏览器中单步调试，前两次 data 是纯对象，第三次 data 是数组，这也证明：一个深层嵌套的 vnode，其转成真实dom的过程是使用递归的方式先子（元素）后父（元素）。
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/1.png)
+h 方法就是 vm._c 或 vm.$createElement：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/2.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/1.png)
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/3.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/2.png)
+
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/3.png)
 
 最后返回 _createElement 方法，_createElement 方法就定义在 createElement 方法的下面，代码如下：
 
@@ -265,17 +272,17 @@ if (cachedCtors[SuperId]) {
 }
 ```
 
-我们知道，全局或局部注册完一个组件之后，在 template 中就要使用，这个组件可能会被多次使用，如果每次使用都走一遍实例化 Vue 子类的过程，是很耗费性能的，所以这里做了缓存，把 SuperId 做为键名，下次使用的时候直接返回即可。例如：https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/main.js
+我们知道，全局或局部注册完一个组件之后，在 template 中就要使用，这个组件可能会被多次使用，如果每次使用都走一遍实例化 Vue 子类的过程，是很耗费性能的，所以这里做了缓存，把 SuperId 做为键名，下次使用的时候直接返回即可。例如：https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/main.js
 
 以上测试代码，debugger 看下效果，两次引用 hello 组件，原本要继承两次父类，但其实是同一个组件，同一个子类，所以直接从缓存中返回：
 
 第一次：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/4.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/4.png)
 
 第二次：
 
-![image](https://github.com/zymfe/into-vue/blob/master/example/vm.$createElement/5.png)
+![image](https://github.com/zymfe/into-vue/blob/master/examples/vm.$createElement/5.png)
 
 Vue.extend 中剩下的代码就比较容易理解了，子类通过原型继承的方式获得了 Vue 父类的属性和方法，然后将 Vue 父类上的静态属性和方法也都赋值给子类，完成一系列工作之后，缓存当前子类，并返回。
 
