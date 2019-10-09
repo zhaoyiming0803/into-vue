@@ -71,7 +71,9 @@ if (options && options._isComponent) {
 }
 ```
 
-options 就是我们在 new Vue 时传入的参数，首先判断 options._isComponent 是否为真，在这里，显然它是 true，因为 _isComponent 这个私有属性是在组件实例化的时候被添加的，后面在组件相关的笔记中会详细介绍。
+options 就是我们在 new Vue 时传入的参数，首先判断 options._isComponent 是否为真，我们在 main.js 中执行 new Vue 的时候，options._isComponent = undefined，所以初始化根 Vue 的时候，执行 else 分支内的代码。
+
+注意：_isComponent 这个私有属性是在组件实例化的时候被添加的，后面在组件相关的笔记中会详细介绍。
 
 走到 else 分支，vm.$options 是执行 mergeOptions 方法获取的，mergeOptions 方法有3个参数：
 
