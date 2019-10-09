@@ -89,13 +89,13 @@ options 就是我们在 new Vue 时传入的参数，首先判断 options._isCom
 export function resolveConstructorOptions (Ctor: Class<Component>) {
   let options = Ctor.options
   if (Ctor.super) {
-    // ... 这里是父子组件嵌套时要用到，在后面的组件相关笔记中会详细介绍，先省略
+    // ... 这里是实例化子组件时要用到，在后面的组件相关笔记中会详细介绍，先省略
   }
   return options
 }
 ```
 
-Ctor 指的是 Vue 构造函数，目前 Vue 构造函数上并没有 super 这个属性，它是在 Vue.extend 时被添加的，后面的笔记中会介绍。
+Ctor 指的是 Vue 构造函数，目前 Vue 构造函数上并没有 super 这个属性，它是在 Vue.extend 时被添加的，后面的笔记中会介绍。现在就是直接返回了 options。
 
 通过之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》可知，目前 Vue 的 options 属性如下：
 
