@@ -23,9 +23,9 @@ Vue.prototype._render = function () {
 	var vm = this;
 	var ref = vm.$options;
 	var render = ref.render;
-	var _parentVNode = ref._parentVnode; // ³õ´ÎÎª undefined£¬$options._parentVnode£¬Õ¼Î»·ûvnode
+	var _parentVNode = ref._parentVnode; // åˆæ¬¡ä¸º undefinedï¼Œ$options._parentVnodeï¼Œå ä½ç¬¦vnode
 
-	vm.$vnode = _parentVNode; // render µÄÊ±ºò³õÊ¼»¯Õ¼Î»·û vnode
+	vm.$vnode = _parentVNode; // render çš„æ—¶å€™åˆå§‹åŒ–å ä½ç¬¦ vnode
 
 	try {
 		vnode = render.call(vm._renderProxy, vm.$createElement);
@@ -37,29 +37,29 @@ Vue.prototype._render = function () {
 	return vnode;
 }
 
-vm.$createElement = function (/* Ò»ÏµÁĞ²ÎÊı */) {
+vm.$createElement = function (/* ä¸€ç³»åˆ—å‚æ•° */) {
 	return createElement(vm, a, b, c, d, true);
 }
 
-vm._c = function (/* Ò»ÏµÁĞ²ÎÊı */) {
+vm._c = function (/* ä¸€ç³»åˆ—å‚æ•° */) {
 	return createElement(vm, a, b, c, d, false);
 }
 
 function createElement () {
-	// ½µ¼¶´¦Àí²ÎÊı...
-	return _createElement(/* Ò»ÏµÁĞ²ÎÊı */)
+	// é™çº§å¤„ç†å‚æ•°...
+	return _createElement(/* ä¸€ç³»åˆ—å‚æ•° */)
 }
 
 function _createElement () {
-	// ... ¶Ô data µÈ²ÎÊı×öÁËĞ£Ñé
-	// Èç¹ûÊÇ render Ò»¸ö×é¼ş£¬ÄÇÃ´ tag ÊÇÒ»¸ö¶ÔÏó
+	// ... å¯¹ data ç­‰å‚æ•°åšäº†æ ¡éªŒ
+	// å¦‚æœæ˜¯ render ä¸€ä¸ªç»„ä»¶ï¼Œé‚£ä¹ˆ tag æ˜¯ä¸€ä¸ªå¯¹è±¡
 	vnode = createComponent(tag, data, context, children);
-	// Èç¹û render ÊÇÒ»¸öÆÕÍ¨µÄ html ±êÇ©£¬ÄÇÃ´tag ÊÇÒ»¸ö string
-	// vnode = new VNode(/* Ò»ÏµÁĞ²ÎÊı */);
+	// å¦‚æœ render æ˜¯ä¸€ä¸ªæ™®é€šçš„ html æ ‡ç­¾ï¼Œé‚£ä¹ˆtag æ˜¯ä¸€ä¸ª string
+	// vnode = new VNode(/* ä¸€ç³»åˆ—å‚æ•° */);
 }
 
 function createComponent (Ctor: Object, data: undefined, context: Object, children: undefined, tag: undefined) {
-	// Cotr Í¨¹ı Vue.extend ±ä³É Vue ×ÓÀà
+	// Cotr é€šè¿‡ Vue.extend å˜æˆ Vue å­ç±»
 	var baseCtor = context.$options._base;
 
   	// plain options object: turn it into a constructor
@@ -70,10 +70,10 @@ function createComponent (Ctor: Object, data: undefined, context: Object, childr
 	data = data || {};
 	data.on = data.nativeOn; // undefined
 	
-	// ×é¼ş¹¹Ôìº¯Êı´´½¨Ö®ºó£¬[È«¾Ö mixins] Ó¦ÓÃµÄÇé¿öÏÂ£¬½âÎö¹¹Ôìº¯ÊıµÄ options Ñ¡Ïî
+	// ç»„ä»¶æ„é€ å‡½æ•°åˆ›å»ºä¹‹åï¼Œ[å…¨å±€ mixins] åº”ç”¨çš„æƒ…å†µä¸‹ï¼Œè§£ææ„é€ å‡½æ•°çš„ options é€‰é¡¹
 	resolveConstructorOptions(Ctor);
 	
-	// ½«×é¼ş¹ÜÀíµÄ¹³×Ó°²×°µ½Õ¼Î»·û node ÉÏ
+	// å°†ç»„ä»¶ç®¡ç†çš„é’©å­å®‰è£…åˆ°å ä½ç¬¦ node ä¸Š
   	installComponentHooks(data);
 	// data = { on: undefined, hook: { init: fn, prepatch: fn, insert: fn, destroy: fn } };
 
@@ -84,7 +84,7 @@ function createComponent (Ctor: Object, data: undefined, context: Object, childr
     		asyncFactory
   	);
 	
-	// *** ÕâÀï·µ»ØµÄÊÇÕ¼Î»·û vnode ***
+	// *** è¿™é‡Œè¿”å›çš„æ˜¯å ä½ç¬¦ vnode ***
 	return vnode;
 }
 
@@ -95,8 +95,8 @@ Vue.prototype._update = function (vnode, hydrating: undefined) {
     	var prevVnode = vm._vnode;
     	var prevActiveInstance = activeInstance;
     	activeInstance = vm;
-	// update µÄÊ±ºò³õÊ¼»¯ _vnode£¨äÖÈ¾vnode£©
-	// Ò²¾ÍÊÇÉÏÃæ¸Õ¸ÕÍ¨¹ı render º¯Êı·µ»ØµÄ vnode
+	// update çš„æ—¶å€™åˆå§‹åŒ– _vnodeï¼ˆæ¸²æŸ“vnodeï¼‰
+	// ä¹Ÿå°±æ˜¯ä¸Šé¢åˆšåˆšé€šè¿‡ render å‡½æ•°è¿”å›çš„ vnode
     	vm._vnode = vnode;
 
 	if (!prevVnode) {
@@ -115,14 +115,14 @@ Vue.prototype._update = function (vnode, hydrating: undefined) {
     	}
 }
 
-Vue.prototype.__patch__ = function (/* Ò»ÏµÁĞ²ÎÊı */) {
+Vue.prototype.__patch__ = function (/* ä¸€ç³»åˆ—å‚æ•° */) {
 	// ...
-	// ¸ß½×º¯Êı·µ»ØÒ»¸ö patch ·½·¨
+	// é«˜é˜¶å‡½æ•°è¿”å›ä¸€ä¸ª patch æ–¹æ³•
 	return function patch (oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
-		// ½«ÆÕÍ¨µÄ±êÇ©½Úµã±ä³É vnode
+		// å°†æ™®é€šçš„æ ‡ç­¾èŠ‚ç‚¹å˜æˆ vnode
  		oldVnode = emptyNodeAt(oldVnode);
 		var oldElm = oldVnode.elm;
-		// ¸¸½Úµã£¬Ê×´Î³õÊ¼»¯ÊÇ body
+		// çˆ¶èŠ‚ç‚¹ï¼Œé¦–æ¬¡åˆå§‹åŒ–æ˜¯ body
         	var parentElm$1 = nodeOps.parentNode(oldElm);
 
 		createElm();
@@ -149,18 +149,18 @@ function createElm (vnode, insertedVnodeQueue, parentElm, refElm, nested, ownerA
 }
 
 function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
-	// ... Ö´ĞĞ component hook ÖĞµÄ init ·½·¨
+	// ... æ‰§è¡Œ component hook ä¸­çš„ init æ–¹æ³•
 	if (
       		vnode.componentInstance &&
       		!vnode.componentInstance._isDestroyed &&
       		vnode.data.keepAlive
     	) {
       		// kept-alive components, treat as a patch
-		// Êı¾İ¸üĞÂÇı¶¯ÊÓÍ¼µÄ±ä»¯£¬Ö´ĞĞ£º
+		// æ•°æ®æ›´æ–°é©±åŠ¨è§†å›¾çš„å˜åŒ–ï¼Œæ‰§è¡Œï¼š
       		var mountedNode = vnode; // work around flow
       		componentVNodeHooks.prepatch(mountedNode, mountedNode);
     	} else {
-		// Ê×´Î patch£¬Ö´ĞĞ£º
+		// é¦–æ¬¡ patchï¼Œæ‰§è¡Œï¼š
       		var child = vnode.componentInstance = createComponentInstanceForVnode(
         		vnode,
         		activeInstance,
@@ -168,14 +168,14 @@ function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
         		refElm
       		);
 		
-		// ×Ó×é¼şÔÙ´Î $mount£¬È»ºó mountComponent£¬½Ó×Å render ºÍ update
+		// å­ç»„ä»¶å†æ¬¡ $mountï¼Œç„¶å mountComponentï¼Œæ¥ç€ render å’Œ update
       		child.$mount(hydrating ? vnode.elm : undefined, hydrating);
     	}
 }
 
 function createComponentInstanceForVnode (
   vnode, // we know it's MountedComponentVNode but flow doesn't
-  parent, // ÖØÒª£º activeInstance in lifecycle state
+  parent, // é‡è¦ï¼š activeInstance in lifecycle state
   parentElm,
   refElm
 ) {
@@ -193,7 +193,7 @@ function createComponentInstanceForVnode (
     options.staticRenderFns = inlineTemplate.staticRenderFns;
   }
 
-  // ÔÙ´ÎÖ´ĞĞ Vue ÊµÀı»¯¹ı³Ì
+  // å†æ¬¡æ‰§è¡Œ Vue å®ä¾‹åŒ–è¿‡ç¨‹
   return new vnode.componentOptions.Ctor(options)
 }
 
