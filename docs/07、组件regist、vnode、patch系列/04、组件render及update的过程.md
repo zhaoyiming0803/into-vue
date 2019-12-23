@@ -124,7 +124,7 @@ Vue.prototype._update = function (vnode, hydrating: undefined) {
 
 Vue.prototype.__patch__ = function (/* 一系列参数 */) {
   // ...
-  // 高阶函数返回一个 patch 方法
+  // 返回一个 patch 函数
   return function patch(oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
     // 将普通的标签节点变成 vnode
     oldVnode = emptyNodeAt(oldVnode);
@@ -211,6 +211,21 @@ Vue.prototype.$mount = function () {
 ```
 
 整个 patch 的过程是执行递归，先子后父，具体示例可以参考：https://github.com/zymfe/test-code/blob/master/test49.html
+
+- 通过 compileToFunctions 将 template 编译为 AST 抽象语法树
+
+- 通过 AST 抽象语法树生成 render 方法
+
+- 在 mountComponent 时实例化渲染 Watcher，Watcher 的第二个参数 expOrFn 是一个 updateComponent 方法：
+
+``` javascript
+updateComponent = () => {
+  // 1、执行 _update 方法，将 vnode 通过 patch 渲染到页面上
+  // 2、这其中就包括根据 children 选项生成子组件，然后执行 createComponentInstanceForVnode，最后执行$mount
+  // 3、继续第二步操作
+  vm._update(vm._render() /* 执行 render 方法生成 vnode */, hydrating)
+}
+```
 
 ### 注意
 本文最后编辑于2019/05/03，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。
