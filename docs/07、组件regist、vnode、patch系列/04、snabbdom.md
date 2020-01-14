@@ -76,7 +76,7 @@ return function patch (oldVnode: VNode | Element, vnode: VNode): VNode {
     // 执行 DOM API， insertBefore，将 oldNode 替换为 newNode，并删除 oldNode
     if (parent !== null) {
       api.insertBefore(parent, vnode.elm!, api.nextSibling(elm));
-      // debugger 到这里，可以看下页面，现在 oldNode 和 newNode 同时存在，Vue 中也是一样
+      // debugger 到这里，可以看下页面，现在 oldNode 和 newNode 同时存在，Vue 中也是一样，参考下图
       // 删除无用的 oldNode
       removeVnodes(parent, [oldVnode], 0, 0);
     }
@@ -91,6 +91,8 @@ return function patch (oldVnode: VNode | Element, vnode: VNode): VNode {
   return vnode;
 };
 ```
+
+![oldNode 和 newNode 同时存在](https://github.com/zymfe/into-vue/blob/master/examples/vm.%24createElement/7.png)
 
 接下来上面 if 分支中的 patchVnode 函数：
 

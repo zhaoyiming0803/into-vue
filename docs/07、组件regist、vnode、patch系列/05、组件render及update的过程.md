@@ -144,7 +144,7 @@ function createComponent(Ctor: Object, data: undefined, context: Object, childre
 
 注意，Vue 组件也是树结构，一层套一层，所以 _render 会递归调用，最终返回一个 render tree，也就是 vnode tree。debugger 看下效果：
 
-![vnode](https://github.com/zymfe/into-vue/blob/master/examples/vm.%24createElement/vnode.png)
+![vnode](https://github.com/zymfe/into-vue/blob/master/examples/vm.%24createElement/6.png)
 
 ***** 对比 snabbdom，整个 render 就是一个 toVNode 的过程。
 
