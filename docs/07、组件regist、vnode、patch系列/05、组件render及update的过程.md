@@ -183,6 +183,7 @@ Vue.prototype._update = function (vnode, hydrating: undefined) {
 Vue.prototype.__patch__ = function (/* 一系列参数 */) {
   // ...
   // 返回一个 patch 函数，到这里，与我们上一节笔记重点学习的 snabbdom 就很相似了
+  // 详细看下源码 /src/core/vdom/patch.js 文件，就可以看到 Vue 如何深度整合 snabbdom 的
   return function patch(oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
     // 将普通的标签节点变成 vnode
     oldVnode = emptyNodeAt(oldVnode);
