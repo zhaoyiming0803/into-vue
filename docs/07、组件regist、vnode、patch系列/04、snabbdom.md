@@ -247,7 +247,11 @@ updateChildren (parentElm: Node,
     // 最简单的场景：前端列表懒加载，从后端获取到数据后，push到数组中
     // 那么 newVNode 肯定比 oldVNode 长
     // 这个时候，before 是 null，那么执行 insertBefore 的时候，其实就是相当于往 oldNode 后面不断添加新节点，设计的真巧
-    // 看起来，before 永远为 null，不为null是在什么场景下呢？我还在思考中...
+    // 不为 null 是在什么场景下呢？昨天给 snabbdom 提交了一个无效的 issue，最后看了下测试用例，才发现自己忽略了一些场景
+    // issue: https://github.com/snabbdom/snabbdom/issues/540
+    // 测试用例：https://github.com/snabbdom/snabbdom/blob/master/src/test/core.ts
+    // 看 prepends elements 这个测试用例，就是 before 不为 null 的情况
+    // 真佩服 snabbdom 设计的真巧妙
     if (oldStartIdx > oldEndIdx) {
       before = newCh[newEndIdx + 1] == null ? null : newCh[newEndIdx + 1].elm;
       addVnodes(parentElm, before, newCh, newStartIdx, newEndIdx, insertedVnodeQueue);
