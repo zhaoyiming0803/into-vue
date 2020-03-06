@@ -2,6 +2,8 @@ VirtualDOM 是针对 DOM 重排重绘性能瓶颈作出的重要优化方案，�
 
 目前，社区有很多不同的 diff 算法开源项目，而最为出名的就是 [snabbdom.js](https://github.com/snabbdom/snabbdom)，Vue2.x 则全面整合了 snabbdom。
 
+另外一款 diff 算法开源项目：[virtual-dom.js](https://github.com/Matt-Esch/virtual-dom)，它是先通过 diff 方法找出两个 DOM Tree 的 patches，然后使用 patch 方法将所有的 patches 应用到旧 DOM Tree 上。写了个 demo 可以作为参考：[virtual-dom.js demo](https://github.com/zymfe/test-code/tree/master/test143-virtual-dom)。
+
 前面几节笔记可以总结为数据初始化，现在该是将数据渲染到 DOM 的时候了，但是 Vue 在执行 $mount 的时候做了很多事情，一开始可能会晕，所以我们可以先了解下 snabbdom，最后再通过断点的方式看 Vue 源码，整个过程就很清晰了。
 
 首先把 snabbdom 项目 clone 到本地。
