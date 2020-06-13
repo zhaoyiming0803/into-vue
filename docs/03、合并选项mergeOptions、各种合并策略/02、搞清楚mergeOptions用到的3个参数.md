@@ -37,7 +37,7 @@ function Vue (options) {
 
 首先通过 this instanceof Vue 判断 Vue构造函数是否是通过 new 关键字调用的，如果不是的话，就给出提示。
 
-然后执行 this.init(options)，在之前的笔记《[用于初始化Vue原型的各种mixin方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/02%E3%80%81%E7%94%A8%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96Vue%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%90%84%E7%A7%8Dmixin%E6%96%B9%E6%B3%95.md)》中提到，Vue 内部使用的 _init 方法是在 src/core/instance/init.js 文件的 initMixin 中被定义的，打开这个文件，来分析我们主要用到的代码：
+然后执行 this.init(options)，在之前的笔记《[用于初始化Vue原型的各种mixin方法](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/02%E3%80%81%E7%94%A8%E4%BA%8E%E5%88%9D%E5%A7%8B%E5%8C%96Vue%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%90%84%E7%A7%8Dmixin%E6%96%B9%E6%B3%95.md)》中提到，Vue 内部使用的 _init 方法是在 src/core/instance/init.js 文件的 initMixin 中被定义的，打开这个文件，来分析我们主要用到的代码：
 
 ``` javascript
 const vm: Component = this
@@ -97,7 +97,7 @@ export function resolveConstructorOptions (Ctor: Class<Component>) {
 
 Ctor 指的是 Vue 构造函数，目前 Vue 构造函数上并没有 super 这个属性，它是在 Vue.extend 时被添加的，后面的笔记中会介绍。现在就是直接返回了 options。
 
-通过之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》可知，目前 Vue 的 options 属性如下：
+通过之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》可知，目前 Vue 的 options 属性如下：
 
 ``` javascript
 Vue.options = {

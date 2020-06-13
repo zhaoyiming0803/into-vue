@@ -1,4 +1,4 @@
-上一节笔记学习了 Vue 选项的各种合并策略，其中涉及到 mixins 选项，其实就是将 mixins 定义为对象，然后逐个将这个对象上的属性进行合并。除此之外，Vue 还为开发者提供了 Vue.mixin 混入接口，在之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》中有记录 Vue.mixin 这种全局静态方法，它被定义在 src/core/global-api/mixin.js 文件中，打开：
+上一节笔记学习了 Vue 选项的各种合并策略，其中涉及到 mixins 选项，其实就是将 mixins 定义为对象，然后逐个将这个对象上的属性进行合并。除此之外，Vue 还为开发者提供了 Vue.mixin 混入接口，在之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》中有记录 Vue.mixin 这种全局静态方法，它被定义在 src/core/global-api/mixin.js 文件中，打开：
 
 ``` javascript
 import { mergeOptions } from '../util/index'
@@ -60,17 +60,17 @@ Vue.mixin = function (mixin: Object) {
 }
 ```
 
-初始的 this.options 同样在之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zymfe/into-vue/blob/master/doc/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》中有记录，可以作为回顾。
+初始的 this.options 同样在之前的笔记《[总结目前挂载到Vue构造函数上的静态属性和方法](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/02%E3%80%81Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/06%E3%80%81%E6%80%BB%E7%BB%93%E7%9B%AE%E5%89%8D%E6%8C%82%E8%BD%BD%E5%88%B0Vue%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md)》中有记录，可以作为回顾。
 
 通过 Vue.mixin 混入的选项是全局的，因为它直接被混入到 Vue 父类的构造函数上，后期每个组件 Vue 子类在实例化的时候，都会执行 mergeOptons，然后接着上节笔记的逻辑，执行各种合并策略。
 
 上面的 created 钩子函数中打印 Vue.mixin created，mounted 钩子函数中打印 Vue.mixin mounted，可以做个测试，有多少个 Vue 类（子类或父类）被实例化，它们就会被打印多少次。
 
-测试代码可参考：[Vue.mixin](https://github.com/zymfe/into-vue/tree/master/examples/Vue.mixin)
+测试代码可参考：[Vue.mixin](https://github.com/zhaoyiming0803/into-vue/tree/master/examples/Vue.mixin)
 
 最后的打印结果为：
 
-![image](https://github.com/zymfe/into-vue/blob/master/examples/Vue.mixin/1.jpg)
+![image](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/Vue.mixin/1.jpg)
 
 Vue 构造函数父类，app 组件 和 hello 组件子类， 共 3个 Vue 类，mixin 中的 created 被执行了3次，Vue.mixin created 被打印了3次。
 

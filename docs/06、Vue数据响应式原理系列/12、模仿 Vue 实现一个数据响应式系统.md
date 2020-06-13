@@ -2,7 +2,7 @@
 
 看完 Vue 响应式系统，有了自己粗浅的一点认识，所以模拟 Vue，自己动手实现一个响应式系统，重在理解 Vue 响应式原理的核心，当前也没有涉及到很多的边界条件，这一点在之后的学习中逐步补充。
 
-脚本参考：https://github.com/zymfe/test-code/blob/master/test64.js
+脚本参考：https://github.com/zhaoyiming0803/test-code/blob/master/test64.js
 
 ### 注意
 本文最后编辑于2019/05/13，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。

@@ -2,7 +2,7 @@ Vue 开发的核心是组件，层层嵌套的组件形成了一个组件树，�
 
 有了上一节学习 snabbdom 的基础，再来看 Vue patch 的过程就相对轻松了。
 
-首先初始化一个 Vue 项目 demo：https://github.com/zymfe/demo-vue/tree/test-patch
+首先初始化一个 Vue 项目 demo：https://github.com/zhaoyiming0803/demo-vue/tree/test-patch
 
 然后在这个部分打个断点：
 
@@ -144,7 +144,7 @@ function createComponent(Ctor: Object, data: undefined, context: Object, childre
 
 注意，Vue 组件也是树结构，一层套一层，所以 _render 会递归调用，最终返回一个 render tree，也就是 vnode tree。debugger 看下效果：
 
-![vnode](https://github.com/zymfe/into-vue/blob/master/examples/vm.%24createElement/6.png)
+![vnode](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/vm.%24createElement/6.png)
 
 ***** 对比 snabbdom，整个 render 就是一个 toVNode 的过程。
 
@@ -276,7 +276,7 @@ Vue.prototype.$mount = function () {
 }
 ```
 
-整个 patch 的过程是执行递归，先子后父，具体示例可以参考：https://github.com/zymfe/test-code/blob/master/test49.html
+整个 patch 的过程是执行递归，先子后父，具体示例可以参考：https://github.com/zhaoyiming0803/test-code/blob/master/test49.html
 
 - 通过 compileToFunctions 将 template 编译为 AST 抽象语法树
 

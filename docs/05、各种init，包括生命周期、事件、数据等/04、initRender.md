@@ -46,7 +46,7 @@ vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
 
 vm._c 是 Vue 内部私有方法，我们写的 vue 组件默认就是使用 _c 方法创建 VNode，vm.$createElement 是用来处理开发者手写的 render 函数，它们只有最后一个入参不同，其他都一样。 
 
-关于自定义 render 函数的应用：：https://github.com/zymfe/test-code/blob/master/test55.vue
+关于自定义 render 函数的应用：：https://github.com/zhaoyiming0803/test-code/blob/master/test55.vue
 
 ### 注意
 本文最后编辑于2019/03/31，技术更替飞快，文中部分内容可能已经过时，如有疑问，可在线提issue。

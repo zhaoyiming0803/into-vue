@@ -96,7 +96,7 @@ extend 方法在之前的笔记中介绍过，就是一个简单的浅拷贝，�
 {
   provide: {
     person: {
-      name: 'zymfe',
+      name: 'zhaoyiming0803',
       skil: {
         skil1: 'HTML',
         skil2: 'CSS',
@@ -136,7 +136,7 @@ extend 方法在之前的笔记中介绍过，就是一个简单的浅拷贝，�
   inject: {
     person: {
       name: {
-        from: 'zymfe'
+        from: 'zhaoyiming0803'
       },
       skill: {
         from: 'skill',

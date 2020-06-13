@@ -59,7 +59,7 @@ vm.$parent = parent
 
 本节说到的组件父子级关系，就是在 patch 过程中形成的（具体说是执行 createComponentInstanceForVnode 函数时）。
 
-patch 其实是一个递归的过程，也就是先渲染子组件，最后渲染父组件。具体过程可以参考：https://github.com/zymfe/test-code/blob/master/test49.html 。
+patch 其实是一个递归的过程，也就是先渲染子组件，最后渲染父组件。具体过程可以参考：https://github.com/zhaoyiming0803/test-code/blob/master/test49.html 。
 
 还是老方法，打个断点看看：
 
@@ -71,19 +71,19 @@ updateComponent = function () {
 ```
 _update 就是 patch 的过程，最后来到 createComponentInstanceForVnode 方法（使用Vnode创建组件实例），断点截图如下：
 
-![image](https://github.com/zymfe/into-vue/blob/master/examples/initLifecycle/1.jpg)
+![image](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/initLifecycle/1.jpg)
 
 最后 return new vnode.componentOptions.Ctor(options) ，定义 options 的时候就有 parent 属性，而 parent 属性值是在 执行 createComponentInstanceForVnode 方法时传入的，我们再继续往上找，看 createComponentInstanceForVnode 在哪里执行的：
 
-![image](https://github.com/zymfe/into-vue/blob/master/examples/initLifecycle/2.jpg)
+![image](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/initLifecycle/2.jpg)
 
 在 componentVNodeHooks.init() 方法中找到了，createComponentInstanceForVnode 方法的第二个参数就是 parent 的值，即 activeInstance，而 activeInstance 是一个全局变量，在执行 _update 的时候被赋值：
 
-![image](https://github.com/zymfe/into-vue/blob/master/examples/initLifecycle/3.jpg)
+![image](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/initLifecycle/3.jpg)
 
 可以看到 activeInstance 执行 vm，_update 方法中 vm 指的是 this，也就是执行 _update 方法的那个对象：
 
-![image](https://github.com/zymfe/into-vue/blob/master/examples/initLifecycle/4.jpg)
+![image](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/initLifecycle/4.jpg)
 
 找到了，执行 _update 方法的对象就是当前正在被 patch 对象，故名思议，也就是活动对象 activeInstance，因为同一时间只有一个组件被渲染，最后总结起来就是：当前正在被实例化的对象，其 parent 指向正在被 path 的组件。
 

@@ -2,7 +2,7 @@ VirtualDOM 是针对 DOM 重排重绘性能瓶颈作出的重要优化方案，�
 
 目前，社区有很多不同的 diff 算法开源项目，而最为出名的就是 [snabbdom.js](https://github.com/snabbdom/snabbdom)，Vue2.x 则全面整合了 snabbdom。
 
-另外一款 diff 算法开源项目：[virtual-dom.js](https://github.com/Matt-Esch/virtual-dom)，它是先通过 diff 方法找出两个 DOM Tree 的 patches，然后使用 patch 方法将所有的 patches 应用到旧 DOM Tree 上。写了个 demo 可以作为参考：[virtual-dom.js demo](https://github.com/zymfe/test-code/tree/master/test143-virtual-dom)。
+另外一款 diff 算法开源项目：[virtual-dom.js](https://github.com/Matt-Esch/virtual-dom)，它是先通过 diff 方法找出两个 DOM Tree 的 patches，然后使用 patch 方法将所有的 patches 应用到旧 DOM Tree 上。写了个 demo 可以作为参考：[virtual-dom.js demo](https://github.com/zhaoyiming0803/test-code/tree/master/test143-virtual-dom)。
 
 前面几节笔记可以总结为数据初始化，现在该是将数据渲染到 DOM 的时候了，但是 Vue 在执行 $mount 的时候做了很多事情，一开始可能会晕，所以我们可以先了解下 snabbdom，最后再通过断点的方式看 Vue 源码，整个过程就很清晰了。
 
@@ -12,7 +12,7 @@ VirtualDOM 是针对 DOM 重排重绘性能瓶颈作出的重要优化方案，�
 
 接下来打开 src 目录，找到最重要的5个文件：snabbdom.ts、htmldomapi.ts、tovnode.ts、vnode.ts、h.ts。
 
-最后创建一个测试的Demo，参考地址：https://github.com/zymfe/test-code/tree/master/test131-snabbdom
+最后创建一个测试的Demo，参考地址：https://github.com/zhaoyiming0803/test-code/tree/master/test131-snabbdom
 
 打开 demo 的 index.html，看 snabbdom 的初始化过程：
 
@@ -94,7 +94,7 @@ return function patch (oldVnode: VNode | Element, vnode: VNode): VNode {
 };
 ```
 
-![oldNode 和 newNode 同时存在](https://github.com/zymfe/into-vue/blob/master/examples/vm.%24createElement/7.png)
+![oldNode 和 newNode 同时存在](https://github.com/zhaoyiming0803/into-vue/blob/master/examples/vm.%24createElement/7.png)
 
 接下来上面 if 分支中的 patchVnode 函数：
 

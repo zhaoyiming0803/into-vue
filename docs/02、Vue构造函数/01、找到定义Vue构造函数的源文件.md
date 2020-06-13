@@ -1,6 +1,6 @@
 了解了 Vue 的整体构成及打包输出，下面开始进入 Vue 构造函数，看下它有哪些静态属性和方法及原型上的属性和方法。
 
-在之前的笔记 [通过Vue的package了解其打包构建过程](https://github.com/zymfe/into-vue/blob/master/doc/01%E3%80%81%E8%B5%B0%E8%BF%9BVue/02%E3%80%81%E9%80%9A%E8%BF%87Vue%E7%9A%84package%E4%BA%86%E8%A7%A3%E5%85%B6%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B.md) 中用到的构建模式是 web-full-esm，再贴下代码：
+在之前的笔记 [通过Vue的package了解其打包构建过程](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/01%E3%80%81%E8%B5%B0%E8%BF%9BVue/02%E3%80%81%E9%80%9A%E8%BF%87Vue%E7%9A%84package%E4%BA%86%E8%A7%A3%E5%85%B6%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA%E8%BF%87%E7%A8%8B.md) 中用到的构建模式是 web-full-esm，再贴下代码：
 
 ``` javascript
 const builds = {

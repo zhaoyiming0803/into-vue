@@ -21,7 +21,7 @@ export function callHook (vm: Component, hook: string) {
 }
 ```
 
-之前的笔记 [生命周期各个钩子等选项的合并策略](https://github.com/zymfe/into-vue/blob/master/doc/03%E3%80%81%E5%90%88%E5%B9%B6%E9%80%89%E9%A1%B9mergeOptions%E3%80%81%E5%90%84%E7%A7%8D%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5/07.3%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%90%84%E4%B8%AA%E9%92%A9%E5%AD%90%E7%AD%89%E9%80%89%E9%A1%B9%E7%9A%84%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5.md) 中说到：生命周期钩子的合并策略函数是 mergeHook，代码如下：
+之前的笔记 [生命周期各个钩子等选项的合并策略](https://github.com/zhaoyiming0803/into-vue/blob/master/docs/03%E3%80%81%E5%90%88%E5%B9%B6%E9%80%89%E9%A1%B9mergeOptions%E3%80%81%E5%90%84%E7%A7%8D%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5/07.3%E3%80%81%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%90%84%E4%B8%AA%E9%92%A9%E5%AD%90%E7%AD%89%E9%80%89%E9%A1%B9%E7%9A%84%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5.md) 中说到：生命周期钩子的合并策略函数是 mergeHook，代码如下：
 
 ``` javascript
 /**

@@ -28,7 +28,7 @@
 
 ### 对 Vue 响应式原理的模拟
 
-https://github.com/zymfe/test-code/blob/master/test64.js
+https://github.com/zhaoyiming0803/test-code/blob/master/test64.js
 
 ### 说明
 
