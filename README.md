@@ -35,3 +35,6 @@ https://github.com/zhaoyiming0803/test-code/blob/master/test64.js
 - 笔记持续更新中，如果对您有帮助，您可以点右上角 "Star" 或 "Watch" 支持一下，不要 Fork， 谢谢！ ^\_^
 - 或者您可以 "follow" 一下，我会不断开源更多的有趣的项目
 - 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
+
+### 个人微信&QQ：1047832475
+<img src="https://github.com/zhaoyiming0803/zhaoyiming0803/raw/master/wechat.jpeg" width="200" height="200">
