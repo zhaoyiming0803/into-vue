@@ -30,6 +30,10 @@
 
 https://github.com/zhaoyiming0803/test-code/blob/master/test64.js
 
+### debug snabbdom
+
+https://github.com/zhaoyiming0803/test-code/tree/master/test131-snabbdom
+
 ### 说明
 
 - 笔记持续更新中，如果对您有帮助，您可以点右上角 "Star" 或 "Watch" 支持一下，不要 Fork， 谢谢！ ^\_^
