@@ -18,6 +18,13 @@
 - vnode 生成的整个 render 过程，包括组件 vnode 和普通 vnode
 - 将 vnode 渲染到页面的 patch 过程
 
+## 横向对比 [React](https://github.com/zhaoyiming0803/into-react18)
+
+- 理解不同框架背后思想
+- 思考如何写出易维护、高性能的组件
+- 避免踩坑
+- 学习优秀的代码技巧
+
 ### 目录
 
 <pre>
