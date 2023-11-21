@@ -125,7 +125,7 @@ const handlers = options.render && options.render._withStripped
 vm._renderProxy = new Proxy(vm, handlers)
 ```
 
-如果我们想要我们自己写的 render 函数有错误提示，可以在选项中指定 _withStripped 为 true 即可：
+如果想要自己写的 render 函数有错误提示，则指定 _withStripped 为 true 即可：
 
 ``` javascript
 import Vue from 'vue'
