@@ -238,7 +238,7 @@ export function initExtend (Vue: GlobalAPI) {
 }
 ```
 
-Vue.extend 用于 Vue 子类继承父类，到时候会在组件初始化的笔记中详细说明。
+Vue.extend 用于 Vue 子类继承父类，后面会在组件初始化的笔记中详细说明。
 
 9、通过 initAssetRegisters 方法在 Vue 构造函数上添加 component、filter、directive 等静态属性：
 
@@ -283,11 +283,11 @@ export function initAssetRegisters (Vue: GlobalAPI) {
 }
 ```
 
-对于 ASSET_TYPES，在上面初始化 Vue.options 的时候已经了解过，当时是把 components、filters、directives等属性挂载到了 Vue.options 上，现在要把component、filter、directive三个属性直接挂载到 Vue 构造函数上，它们的作用是不一样的（最直接的是看单复数），这里先简单说下：
+对于 ASSET_TYPES，在上面初始化 Vue.options 的时候已经了解过，当时是把 components、filters、directives 等属性挂载到了 Vue.options 上，现在要把 component、filter、directive 三个属性直接挂载到 Vue 构造函数上，它们的作用是不一样的（***最直接的是看单复数***），这里先简单说下：
 
-Vue.options 上的 components、filters、directives 是在 实例化 Vue 时做 merge 用的，相当于是 Vue 官方为我们内置的一些组件、过滤器和指令。
+Vue.options 上的 components、filters、directives 是在实例化 Vue 时做 merge 用的，相当于是 Vue 官方为我们内置的一些组件、过滤器和指令。
 
-Vue 上的 component、filter、directive 是Vue 官方为我们提供的全局注册组件、过滤器和指令的API接口。比如我们在 main.js 中执行 Vue.component('Hello', Hello)，那么在其他任意一个组件中都能使用 Hello 这个全局组件。
+Vue 上的 component、filter、directive 是 Vue 为我们提供的全局注册组件、过滤器和指令的 API 接口。比如我们在 main.js 中执行 Vue.component('Hello', Hello)，那么在其他任意一个组件中都能使用 Hello 这个全局组件。
 
 ### 总结
 
