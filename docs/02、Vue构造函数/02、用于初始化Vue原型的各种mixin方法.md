@@ -48,7 +48,7 @@ initMixin 方法主要是在 Vue 构造函数的原型上挂载了 _init 方法�
 
 ### stateMixin
 
-stateMixin 方法定义在 src/core/instance/state.js 中，打开之后可以看到，state 主要是初始化一些 date、prop、computed、methods 相关的数据，这些都是我们写 Vue 组件的时候经常用的选项，当前主要看的代码如下：
+stateMixin 方法定义在 src/core/instance/state.js 中，打开之后可以看到，state 主要是初始化一些 data、props、computed、methods 相关的数据，这些都是我们写 Vue 组件的时候经常用的选项，当前主要看的代码如下：
 
 ``` javascript
 export function stateMixin (Vue: Class<Component>) {
@@ -168,7 +168,7 @@ export function renderMixin (Vue: Class<Component>) {
 }
 ```
 
-这里看到了我们经常会用到的 $nextTick 方法，从它的前缀使用下划线可以看出，_render 是 Vue 内部使用的，_render 方法的主要作用是将 template 模板转化成 vnode，然后通过上面笔记提到的 __patch__ 方法将 vnode 渲染到页面中。这里先大概了解下即可。
+这里看到了我们经常会用到的 $nextTick 方法，从它的前缀使用下划线可以看出，_render 是 Vue 内部使用的，_render 方法的主要作用是将 template 模板转化成 vnode，然后通过上面笔记提到的 __patch__ 方法将 vnode 渲染到页面中。这里先大概了解下。
 
 ### 总结
 
